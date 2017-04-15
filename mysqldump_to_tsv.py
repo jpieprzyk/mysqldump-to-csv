@@ -50,7 +50,7 @@ def parse_values(values, outfile):
     )
 
     delim = '\t'
-    writer = csv.writer(outfile, delimiter = delim, quoting=csv.QUOTE_NONE)
+    writer = csv.writer(outfile, delimiter = delim, quotechar='', quoting=csv.QUOTE_NONE)
     for reader_row in reader:
         for column in reader_row:
             # If our current string is empty...
