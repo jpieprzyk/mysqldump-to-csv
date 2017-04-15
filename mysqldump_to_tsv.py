@@ -49,7 +49,8 @@ def parse_values(values, outfile):
                         strict=True
     )
 
-    writer = csv.writer(outfile, quoting=csv.QUOTE_MINIMAL)
+    delim = '\t'
+    writer = csv.writer(outfile, delimiter = delim, quoting=csv.QUOTE_NONE)
     for reader_row in reader:
         for column in reader_row:
             # If our current string is empty...
@@ -83,6 +84,7 @@ def parse_values(values, outfile):
                 if len(latest_row) == 0:
                     column = column[1:]
             # Add our column to the row we're working on.
+            column = column.replace(delim, ' ')
             latest_row.append(column)
         # At the end of an INSERT statement, we'll
         # have the semicolon.
